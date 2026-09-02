@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/* Admin dashboard palette — matches the public site's design tokens so the
+   whole product feels like one system. */
+:root {
+  --cream: #fdf6f3;
+  --cream-2: #f9ede8;
+  --blush: #f2c9c4;
+  --blush-soft: #fae5e1;
+  --blush-deep: #e3a7a2;
+  --plum: #4a1f35;
+  --plum-deep: #2e1020;
+  --plum-mid: #6b3450;
+  --gold: #c9a87c;
+  --gold-soft: #e7d5bc;
+  --ink: #2a1520;
+  --muted: #8d6b79;
+  --muted-2: #a98c98;
+  --line: rgba(74, 31, 53, 0.12);
+  --ok: #3f7d5e;
+  --warn: #b4741f;
+  --danger: #c4576b;
+
+  --background: var(--cream);
+  --foreground: var(--ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-blush: var(--blush);
+  --color-blush-soft: var(--blush-soft);
+  --color-blush-deep: var(--blush-deep);
+  --color-plum: var(--plum);
+  --color-plum-deep: var(--plum-deep);
+  --color-plum-mid: var(--plum-mid);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --font-sans: "Plus Jakarta Sans Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: "Fraunces Variable", Georgia, serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Plus Jakarta Sans Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Fraunces Variable", Georgia, serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream-2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--blush-deep);
+  border-radius: 99px;
+  border: 3px solid var(--cream-2);
+}
+
+/* ============================================================
+   Shared admin form controls
+   One definition here instead of a duplicated `<style jsx global>`
+   block on every admin page — they had drifted apart (some set
+   width:100%, some didn't), which is why controls lined up
+   differently from screen to screen.
+   ============================================================ */
+.input {
+  width: 100%;
+  padding: 10px 13px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.input::placeholder {
+  color: var(--muted-2);
+}
+.input:hover {
+  border-color: rgba(74, 31, 53, 0.22);
+}
+.input:focus {
+  border-color: var(--plum);
+  box-shadow: 0 0 0 3px rgba(242, 201, 196, 0.45);
+}
+
+/* Native selects render with a platform chevron that clashes with the
+   rest of the palette — draw our own so selects match text inputs. */
+select.input {
+  appearance: none;
+  padding-right: 34px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B3450' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+/* Keep date/time pickers the same height as text inputs across browsers. */
+.input[type="date"],
+.input[type="time"] {
+  min-height: 42px;
+}
+
+/* Accent native checkboxes with the brand plum. */
+.admin-check {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--plum);
+  flex: none;
+}
+
+/* Horizontal scrollers (mobile nav) shouldn't show the themed pink
+   scrollbar track — it read as a stray coloured bar under the menu. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
