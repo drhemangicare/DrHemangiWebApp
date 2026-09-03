@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Dr Hemangi">
+  <!--
+    Tab icon: a mother in profile with the baby curled inside her.
+
+    Drawn from scratch for this project. The path coordinates below are
+    original; the underlying idea (a pregnancy silhouette) is a generic concept
+    and not something anyone owns, so there is no third-party artwork here and
+    nothing licensed in.
+
+    WHY THIS SHAPE, AND NOT THE OBVIOUS ONES
+    Four earlier attempts were thrown away for reading wrong at 16px:
+    two rounded figures side by side became the generic "contacts" glyph; a
+    crescent with a dot became a letter C; a spiral became a seashell; and a
+    ring inside the belly became a keyhole. What finally reads as a BABY rather
+    than a target is the fetal curl: a small head with a curved back tucked
+    around it. That silhouette has no other common meaning at this size.
+
+    HOW IT SURVIVES 16px
+    Three marks, no more: a head, a body, and the curl. The curl is cut OUT in
+    a tile-toned colour rather than drawn in blush, so it never has to hold a
+    hairline of its own. The gap between head and body is a real gap, roughly
+    1px at tab size, which keeps them from fusing into one blob.
+
+    COLOURS are the site's brand tokens: plum #4A1F35 into plum-mid #6B3450 for
+    the tile (the same diagonal as the header logo), blush #F2C9C4 for the
+    figure, and #57283F for the carved curl. Corner radius 10/32 matches the
+    header logo tile's 13/42.
+
+    EDITING NOTE: an XML comment may not contain two hyphens in a row, so CSS
+    custom-property names cannot be written here in their usual form. An invalid
+    comment makes the whole file fail to parse and the icon silently renders as
+    a broken image. That happened once already.
+  -->
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4A1F35"/>
+      <stop offset="1" stop-color="#6B3450"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="32" height="32" rx="10" fill="url(#tile)"/>
+
+  <!-- The figure is drawn around its own centre of (12.95, 16.25), then moved
+       to the tile's centre and scaled to 0.95 so it keeps a margin. -->
+  <g transform="translate(16 16) scale(0.95) translate(-12.95 -16.25)">
+    <!-- head -->
+    <circle cx="13.4" cy="7" r="3.5" fill="#F2C9C4"/>
+    <!-- body: the left side carries the bulge, the right falls straighter -->
+    <path d="M16.9 11.6c2.7 1.6 4.2 4.6 4.2 8.2 0 5.1-3.3 8.7-8 8.7-4.8 0-8.1-3.5-8.1-8.4 0-4.3 2.6-7.8 6.6-8.7z"
+          fill="#F2C9C4"/>
+    <!-- the baby, carved out of the body: head, then the curve of its back -->
+    <circle cx="11.2" cy="17.8" r="2.5" fill="#57283F"/>
+    <path d="M13.9 19.4c.5 2.8-1.2 4.9-3.7 4.9-1.8 0-3.2-1.2-3.2-2.8"
+          fill="none" stroke="#57283F" stroke-width="2.7" stroke-linecap="round"/>
+  </g>
+</svg>
